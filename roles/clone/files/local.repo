@@ -1,0 +1,5 @@
+[local]
+name=local
+enabled=1
+gpgcheck=0
+baseurl=http://repo.lab.cloud/all

@@ -1,0 +1,10 @@
+---
+- name: "changing ServerA HostName"
+  hostname:
+    name: "servera.lab.cloud"
+  when: ansible_fqdn != ansible_ssh_host and ansible_all_ipv4_addresses == ["10.10.10.21"]
+
+- name: "changing ServerB HostName"
+  hostname:
+    name: "serverb.lab.cloud"
+  when: ansible_fqdn != ansible_ssh_host and ansible_all_ipv4_addresses == ["10.10.10.22"]

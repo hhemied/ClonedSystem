@@ -1,0 +1,11 @@
+---
+- name: sending Autherization key.
+  authorized_key:
+    user: "{{ control_user_name }}"
+    state: present
+    key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+
+- name: Allow passwordless command
+  copy:
+    src: ansible
+    dest: /etc/sudoers.d/ansible

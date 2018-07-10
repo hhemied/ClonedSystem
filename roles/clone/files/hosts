@@ -1,0 +1,7 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+10.10.10.4      repo.lab.cloud  repo
+10.10.10.5      ansible.lab.cloud       ansible
+10.10.10.6      servera.lab.cloud       servera
+10.10.10.7      serverb.lab.cloud       serverb
+10.10.10.20      clone.lab.cloud         clone

@@ -1,0 +1,6 @@
+---
+- name: creating Ansible User.
+  user:
+    name: "{{ control_user_name }}"
+    password: "{{ control_user_pass }}"
+    group: "wheel"

@@ -1,0 +1,46 @@
+---
+- name: "Adding /etc/hosts"
+  copy:
+    src: files/hosts
+    dest: /etc/hosts
+
+- name: "Collect repo files"
+  find:
+    paths: ["/etc/yum.repos.d"]
+    patterns: "*.repo"
+  register: repos_to_delete
+
+- name: "Remove all Repos"
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ repos_to_delete.files }}"
+
+
+- name: "Adding local repo"
+  copy:
+    src: files/local.repo
+    dest: /etc/yum.repos.d/local.repo
+
+- name: "Adding EPEL repo"
+  copy:
+    src: files/epel.repo
+    dest: /etc/yum.repos.d/epel.repo
+
+- name: "Update"
+  yum:
+    name: '*'
+    state: latest
+
+- name: "Installing vim"
+  yum:
+    name: "vim"
+    update_cache: true
+    state: latest
+
+- name: "Installing the provider package for ifconfig cmd"
+  yum:
+    name: "net-tools"
+    update_cache: true
+    state: latest
+  ignore_errors: true
